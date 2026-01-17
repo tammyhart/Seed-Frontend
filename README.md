@@ -1,102 +1,18 @@
 # Seed Frontend Engineering Take-Home
 
-Next.js project using the Pages router
-- Feel free to modify file structure, create components, add tests, rename things, etc
-- You can style however you'd like (e.g., styled-components, css modules, scss, etc)
+## Architectural Decisions
 
-## Getting Started
+### 1. Framework Modernization (App Router)
 
-```bash
-npm install
-npm run dev
-```
+I chose to migrate the project structure from the **Pages Router** to the **App Router** (`src/app`).
 
-The app should be available at [http://localhost:3000](http://localhost:3000).
+- **Layout Architecture:** Leverages the Layout RFC (`layout.tsx`) for a more efficient global shell to manage Design System tokens and fonts, replacing the legacy `_app.tsx` / `_document.tsx` pattern.
+- **Server Components:** Establishes a foundation for performance-first architecture (RSC), reducing client-side bundle size by keeping non-interactive logic on the server.
+- **Technical Debt:** As Next.js now defaults to App Router, adhering to the Pages Router in a greenfield implementation would introduce immediate legacy debt.
 
-## Project Structure
+### 2. Dependency Upgrades & Security
 
-- `pages/` - Next.js pages (uses Pages Router)
-- `pages/index.tsx` - Homepage at /
-- `pages/_app.tsx` - App wrapper, imports a styles/globals.css
-- `styles/globals.css` - Global CSS with SeedSans font face definitions
-- `public/fonts/` - SeedSans font files
-- `pages/_document.tsx` - Next.js _document, preloads SeedSans font files
+I performed a comprehensive upgrade of `package.json` dependencies to their latest stable versions.
 
-## Design Tokens
-
-Design tokens are imported through the @seed-health/tokens package, and they can be used
-in a variety of ways. Here's some examples below, but they may need to be tweaked to function
-
-### CSS Variables
-
-```jsx
-import '@seed-health/tokens/build/css/variables.css';
-import '@seed-health/tokens/build/css/styles.css';
-
-function Button() {
-  return (
-    <button
-      className="text-fixed-body-medium"
-      style={{
-        backgroundColor: 'var(--color-primary-500)',
-        padding: 'var(--spacing-medium)'
-      }}>
-      Click me
-    </button>
-  );
-}
-```
-
-### JavaScript/TypeScript
-
-```jsx
-import * as tokens from '@seed-health/tokens';
-
-function Button() {
-  return (
-    <button style={{
-      ...tokens.FixedLabelMedium,
-      padding: tokens.SpacingX2
-    }}>
-      Click me
-    </button>
-  );
-}
-```
-
-### SCSS
-
-```scss
-@use '@seed-health/tokens/build/scss/variables' as *;
-@use '@seed-health/tokens/build/scss/mixins' as *;
-
-.button {
-  @include text-fixed-label-medium;
-  background-color: $color-primary-500;
-  padding: $spacing-medium;
-}
-```
-
-### CSS Modules
-
-```css
-.button {
-  background-color: var(--color-primary-500);
-  padding: var(--spacing-medium);
-}
-```
-
-### Styled Components
-
-```tsx
-import { GlobalTokenStyles } from '@seed-health/tokens/react';
-
-function App() {
-  return (
-    <>
-      <GlobalTokenStyles />
-      {/* Your app content */}
-    </>
-  );
-}
-```
+- **Vulnerability Mitigation:** This upgrade addresses recent security advisories associated with older Next.js versions (specifically regarding **Cache Poisoning** and **SSR Denial-of-Service** vectors).
+- **Strictness:** Ensures full compatibility with the latest TypeScript strict mode and React ecosystem standards.
