@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import "./globals.css"
+import "@seed-health/tokens/css/variables.css"
 
 export const metadata: Metadata = {
   title: "Seed Frontend Engineering Takehome",
