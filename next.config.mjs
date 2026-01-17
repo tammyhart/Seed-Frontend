@@ -1,26 +1,12 @@
-/** @type {import('next').NextConfig} */
+import withLinaria from "next-with-linaria"
 
-import process from "node:process"
-
+/** @type {import('next-with-linaria').LinariaConfig} */
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["jsx", "js", "tsx", "ts"],
-  webpack: config => {
-    config.module.rules.push({
-      test: /\.(tsx|ts|js|jsx|mjs)$/,
-      exclude: /node_modules/,
-      use: [
-        {
-          loader: "@linaria/webpack-loader",
-          options: {
-            sourceMap: process.env.NODE_ENV !== "production",
-          },
-        },
-      ],
-    })
-
-    return config
+  linaria: {
+    displayName: true,
   },
 }
 
-export default nextConfig
+export default withLinaria(nextConfig)
