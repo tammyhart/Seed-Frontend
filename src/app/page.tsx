@@ -1,15 +1,17 @@
-import Header from "@/components/navigation/Header"
+"use client"
 
-const Home = (): React.ReactElement => {
+import JourneyProvider from "@/context/JourneyContext"
+
+import Experience from "@/components/Experience"
+
+import JOURNEY_DATA from "@/data/content"
+
+const Page = (): React.ReactElement => {
   return (
-    <>
-      <Header />
-      <main>
-        <h1>Welcome to Seed</h1>
-        <p>Frontend Engineering Takehome</p>
-      </main>
-    </>
+    <JourneyProvider sceneCount={JOURNEY_DATA.length}>
+      <Experience />
+    </JourneyProvider>
   )
 }
 
-export default Home
+export default Page

@@ -6,6 +6,7 @@ const nextConfig = {
   pageExtensions: ["jsx", "js", "tsx", "ts"],
   linaria: {
     displayName: true,
+    fastCheck: false,
   },
 }
 

@@ -3,17 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
+    "test": "vitest run",
     "test:watch": "jest --watch"
   },
   "dependencies": {
     "@linaria/core": "^6.3.0",
     "@linaria/react": "^6.3.0",
     "@seed-health/tokens": "^1.0.12",
+    "@use-gesture/react": "^10.3.1",
+    "clsx": "^2.1.1",
+    "motion": "^12.27.0",
     "next": "^16.1.3",
     "next-with-linaria": "^1.3.0",
     "react": "^19.2.3",
@@ -28,15 +31,16 @@
     "@types/node": "^25.0.9",
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
-    "@wyw-in-js/babel-preset": "^1.0.5",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-unused-imports": "^4.3.0",
     "globals": "^17.0.0",
     "jest": "^30.2.0",
     "jest-environment-jsdom": "^30.2.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.53.0"
+    "typescript-eslint": "^8.53.0",
+    "vitest": "^4.0.17"
   },
   "engines": {
     "node": "20.11"

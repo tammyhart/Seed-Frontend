@@ -65,12 +65,4 @@ export default [
       ],
     },
   },
-  {
-    files: ["babel.config.js"],
-    languageOptions: {
-      globals: {
-        ...globals.node,
-      },
-    },
-  },
 ]
