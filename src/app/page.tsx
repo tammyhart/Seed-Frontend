@@ -2,14 +2,14 @@
 
 import JourneyProvider from "@/context/JourneyContext"
 
-import Experience from "@/components/Experience"
+import Journey from "@/components/Journey"
 
 import JOURNEY_DATA from "@/data/content"
 
-const Page = (): React.ReactElement => {
+const Page = () => {
   return (
     <JourneyProvider sceneCount={JOURNEY_DATA.length}>
-      <Experience />
+      <Journey />
     </JourneyProvider>
   )
 }

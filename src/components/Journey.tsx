@@ -12,7 +12,7 @@ import JOURNEY_DATA from "@/data/content"
 
 import * as Styled from "./Styled"
 
-const Experience = (): React.ReactElement => {
+const Experience = () => {
   const { progress } = useJourney()
 
   return (
