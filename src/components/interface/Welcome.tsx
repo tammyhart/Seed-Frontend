@@ -1,21 +1,21 @@
 import Image from "next/image"
-
 import * as Styled from "./Styled"
+import clsx from "clsx"
 
 import avatar from "@/assets/avatar.png"
-import pointsIcon from "@/assets/icons/points.svg"
-import subscriptionsIcon from "@/assets/icons/subscriptions.svg"
-import strainsIcon from "@/assets/icons/strains.svg"
-import nutrientsIcon from "@/assets/icons/nutrients.svg"
-import clsx from "clsx"
+
+import PointsIcon from "@/components/icons/Points"
+import SubscriptionsIcon from "@/components/icons/Subscriptions"
+import StrainsIcon from "@/components/icons/Strains"
+import NutrientsIcon from "@/components/icons/Nutrients"
 
 const content = {
   name: "Sade",
   data: [
-    { number: "987", label: "Points to Spend", icon: pointsIcon },
-    { number: "001", label: "Subscriptions", icon: subscriptionsIcon },
-    { number: "024", label: "Strains Delivered", icon: strainsIcon },
-    { number: "020", label: "Nutrients Delivered", icon: nutrientsIcon },
+    { number: "987", label: "Points to Spend", Icon: PointsIcon },
+    { number: "001", label: "Subscriptions", Icon: SubscriptionsIcon },
+    { number: "024", label: "Strains Delivered", Icon: StrainsIcon },
+    { number: "020", label: "Nutrients Delivered", Icon: NutrientsIcon },
   ],
 }
 
@@ -37,10 +37,10 @@ const Welcome = () => {
       </h1>
 
       <Styled.Data>
-        {content.data.map(({ icon, number, label }) => (
+        {content.data.map(({ Icon, number, label }) => (
           <li key={label}>
             <span className={clsx(Styled.welcomeText, "number")}>
-              <Image alt={`${label} icon`} height={24} src={icon} width={24} />
+              <Icon />
               {number}
             </span>
             <span className="label">{label}</span>

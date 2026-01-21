@@ -58,3 +58,7 @@ Given the 3-hour constraint, I focused on the highest-risk technical challenges:
 | **5. Scenes 2 & 3**           | **1.5 Hours** | Adapting the layout engine for inverted split-screens and video integration.                                                             |
 | **6. Accessibility & Polish** | **2 Hours**   | Semantic HTML, ARIA labels, and focus states for keyboard navigation.                                                                    |
 | **TOTAL**                     | **~9 Hours**  | **~1.25 Days of Work**                                                                                                                   |
+
+### Actual Time Spent
+
+I spent about **5.5 hours** total. Roughly half of that was foundational work (environment setup and the core physics engine), and the other half was executing the high-fidelity 'Vertical Slice' of the intro scene and documenting the architectural decisions.

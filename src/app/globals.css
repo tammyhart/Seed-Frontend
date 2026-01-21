@@ -49,6 +49,7 @@
 
 :root {
   --color-journey-light: #efefea;
+  --timeline-color: var(--color-journey-light);
 }
 
 *,
@@ -66,6 +67,24 @@ body {
   color: var(--text-primary);
   background: var(--container-lightest);
   scroll-behavior: smooth;
+  transition:
+    color 500ms ease,
+    background-color 500ms ease;
+}
+
+body.theme-dark {
+  --text-primary: var(--color-primary-snow-white);
+  --actions-primary: var(--color-primary-snow-white);
+  --timeline-color: var(--color-primary-seed-green);
+}
+
+a,
+button,
+span {
+  transition:
+    color 500ms ease,
+    background-color 500ms ease,
+    border-color 500ms ease;
 }
 
 html,

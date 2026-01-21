@@ -1,4 +1,5 @@
-import { motion } from "motion/react"
+import { useEffect } from "react"
+import { motion, useMotionValueEvent } from "motion/react"
 
 import useJourney from "@/hooks/useJourney"
 
@@ -17,7 +18,31 @@ const MotionMain = motion(Styled.Main)
 const MotionViewport = motion(Styled.Viewport)
 
 const Experience = () => {
-  const { progress } = useJourney()
+  const { progress, state } = useJourney()
+  const { sceneCount } = state
+
+  useMotionValueEvent(progress, "change", latest => {
+    const count = sceneCount > 0 ? sceneCount : 1
+    const activeIndex = Math.round(latest * count)
+    const clampedIndex = Math.max(
+      0,
+      Math.min(activeIndex, JOURNEY_DATA.length - 1),
+    )
+
+    const theme = JOURNEY_DATA[clampedIndex]?.theme || "light"
+
+    if (theme === "dark") {
+      document.body.classList.add("theme-dark")
+    } else {
+      document.body.classList.remove("theme-dark")
+    }
+  })
+
+  useEffect(() => {
+    return () => {
+      document.body.classList.remove("theme-dark")
+    }
+  }, [])
 
   const duration = 1
 

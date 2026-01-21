@@ -75,13 +75,12 @@ export const Data = styled.ul`
     .number {
       display: flex;
       align-items: center;
-      gap: var(--gap-4);
+      gap: var(--gap-8);
 
       svg {
         flex-shrink: 0;
         width: 1.25rem;
         height: 1.25rem;
-        padding-top: 0.625rem;
       }
     }
 
@@ -110,7 +109,7 @@ export const TimelinePoint = styled.button`
   position: relative;
   z-index: 10;
 
-  background: var(--color-journey-light);
+  background: var(--timeline-color);
   color: var(--actions-primary);
   font-size: var(--typography-size-350);
   font-weight: var(--typography-weight-500);
@@ -131,10 +130,11 @@ export const Pills = styled.div`
 `
 
 export const Pill = styled.p`
+  padding-inline: var(--gap-8);
+  color: var(--color-primary-seed-green);
   border-radius: var(--radius-medium);
   border: 0.0625rem solid currentColor;
   font-size: var(--typography-size-300);
-  padding-inline: var(--gap-8);
   font-weight: var(--typography-weight-500);
   line-height: 1.25;
 `
