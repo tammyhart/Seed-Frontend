@@ -1,64 +1,54 @@
 # Seed Frontend Engineering Take-Home
 
-## Architectural Decisions
+## 🎯 Approach: The Vertical Slice
 
-### 1. Framework Modernization (App Router)
+Per the "Show, Don't Tell" philosophy discussed with Jon, I treated this assignment as a **Vertical Slice Prototype**.
 
-I chose to migrate the project structure from the **Pages Router** to the **App Router** (`src/app`).
+Instead of delivering three low-fidelity scenes, I prioritized **Scene 1 (Intro)** with high-fidelity polish, a production-grade orchestration engine, and a scalable architectural foundation. This demonstrates the "Seed Quality" bar within a realistic timeframe.
 
-- **Layout Architecture:** Leverages the Layout RFC (`layout.tsx`) for a more efficient global shell to manage Design System tokens and fonts, replacing the legacy `_app.tsx` / `_document.tsx` pattern.
-- **Server Components:** Establishes a foundation for performance-first architecture (RSC), reducing client-side bundle size by keeping non-interactive logic on the server.
-- **Technical Debt:** As Next.js now defaults to App Router, adhering to the Pages Router in a greenfield implementation would introduce immediate legacy debt.
+## 🏗️ Architectural Decisions
 
-### 2. Dependency Upgrades & Security
+### 1. Framework & Routing (App Router)
 
-I performed a comprehensive upgrade of `package.json` dependencies to their latest stable versions.
+I migrated the structure to the Next.js **App Router** to leverage Server Components and the new Layout RFC. This positions the app for better performance (RSC) and modernized state management compared to the legacy Pages router.
 
-- **Vulnerability Mitigation:** This upgrade addresses recent security advisories associated with older Next.js versions (specifically regarding **Cache Poisoning** and **SSR Denial-of-Service** vectors).
-- **Strictness:** Ensures full compatibility with the latest TypeScript strict mode and React ecosystem standards.
+### 2. Styling Strategy (Linaria)
 
-### 3. CSS
+I chose **Linaria** for Zero-runtime CSS. While this incurred a higher upfront configuration cost (~1.5 hours) compared to Tailwind or CSS Modules, it ensures:
 
-I chose a robust CSS-in-JS architecture (Linaria) to demonstrate scalable styling. This incurred an upfront configuration cost that ate into the implementation time, but it results in a more performant runtime (zero-runtime CSS) for the end user.
+- **Performance:** No JS bundle bloat for styles.
+- **Composition:** A component-centric styling model that scales better for complex motion UIs.
 
-## 🧠 Dynamic Content Logic
+### 3. Dynamic Content Engine
 
-While the prompt provided static text for the final state ("...taking shape"), I implemented a dynamic content engine to handle the entire user lifecycle.
+To demonstrate lifecycle thinking, I replaced the static "Intro" text with a time-aware content generator. The interface calculates the user's specific position in the journey relative to a `START_DATE`, serving personalized copy (e.g., "Day 1" vs "Week 4") without requiring design changes.
 
-Instead of hardcoding the strings, the interface calculates the user's specific position in the journey relative to their start date. This allows the application to serve personalized messaging for Day 1, Week 1, and Month 3 without needing new designs.
+## ⏱️ Scoping & Calibration
 
-```typescript
-const getStatusString = (): string => {
-  const now = new Date()
-  const diffTime = Math.abs(now.getTime() - START_DATE.getTime())
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+To execute the full prompt with production-grade fidelity (including the complex "Train" interaction and auto-play orchestration), I estimate the total effort at **~15.5 engineering hours**.
 
-  // Expanded the design system to cover early lifecycle states
-  if (diffDays <= 1) return "And your path begins Now"
-  if (diffDays <= 7) return "And you are settling In"
-  if (diffDays <= 30) return "And new habits are Forming"
-  if (diffDays < 90) return "And consistency is the Key"
+Given the time constraints, I focused on the highest-risk technical challenges.
 
-  return "And results are taking Shape"
-}
-```
+| Feature Area                 | Est. Hours | Justification                                                                             |
+| :--------------------------- | :--------- | :---------------------------------------------------------------------------------------- |
+| **1. Architecture & Config** | **1.5**    | Toolchain setup, TypeScript strictness, and Linaria integration.                          |
+| **2. Scene Orchestration**   | **3.5**    | Building the central "Director" engine to handle auto-play timers and scroll-locking.     |
+| **3. The "Train" Timeline**  | **4.5**    | Complex bidirectional state machine (Timeline controls Scene vs. Scene updates Timeline). |
+| **4. Scene 1 (Intro)**       | **2.0**    | High-fidelity entrance choreography and brand-aligned easing tuning.                      |
+| **5. Scenes 2 & 3**          | **2.0**    | Implementing sequential auto-play logic and video synchronization.                        |
+| **6. A11y & Polish**         | **2.0**    | Semantic HTML, ARIA labels, and keyboard navigation.                                      |
+| **TOTAL**                    | **~15.5**  | **~2 Days Work**                                                                          |
 
-## ⏱️ Scoping & Estimation
+### Actual Time Spent: 6.5 Hours
 
-To execute the full prompt with production-grade fidelity (including complex timeline interactions and proper accessibility), I estimate the total effort at **~18 engineering hours**.
+- **Foundational (2.5h):** Setup, Architecture, Orchestration Engine.
+- **Execution (4.0h):** High-fidelity implementation of Scene 1, Dynamic Text, and Documentation.
 
-Given the 3-hour constraint, I focused on the highest-risk technical challenges: the core physics engine, interface layout, and a high-fidelity execution of Scene 1. This factors in heavy assist from an agentic AI coding assistant.
+## 🚀 Roadmap (What I'd do differently)
 
-| Feature Area                  | Time Estimate | Justification                                                                                                                            |
-| :---------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| **1. Architecture & Config**  | **0.5 Hour**  | Setup, Linting, Fonts, and Linaria (Zero-runtime CSS) configuration.                                                                     |
-| **2. Physics Engine**         | **0.5 Hours** | Building a robust `useVirtualScroll` hook that handles touch, wheel, and keyboard events without scroll-jacking or jank.                 |
-| **3. The "Train" Timeline**   | **3 Hours**   | Developing the complex state machine for the interactive timeline, including precise pixel-mapping, progress tracking, and hover states. |
-| **4. Scene 1 (Intro)**        | **1.5 Hours** | High-fidelity layout and entrance choreography. Tuning stagger delays and easing curves to match the brand feel.                         |
-| **5. Scenes 2 & 3**           | **1.5 Hours** | Adapting the layout engine for inverted split-screens and video integration.                                                             |
-| **6. Accessibility & Polish** | **2 Hours**   | Semantic HTML, ARIA labels, and focus states for keyboard navigation.                                                                    |
-| **TOTAL**                     | **~9 Hours**  | **~1.25 Days of Work**                                                                                                                   |
+Given more time, I would shift focus from "implementation" to "operationalization."
 
-### Actual Time Spent
-
-I spent about **5.5 hours** total. Roughly half of that was foundational work (environment setup and the core physics engine), and the other half was executing the high-fidelity 'Vertical Slice' of the intro scene and documenting the architectural decisions.
+1.  **Scene Orchestration:** Complete the "Director" engine to handle the auto-play sequence for Scenes 2 & 3, ensuring video `onEnded` events trigger smooth page transitions.
+2.  **Mobile Strategy:** Implement a responsive layout switch. On mobile (`<768px`), the horizontal scroll paradigm should revert to a vertical stack to respect native device behaviors.
+3.  **Accessibility (A11y):** Implement a `usePrefersReducedMotion` hook. If detected, the system should disable the entrance staggers and auto-play transitions to ensure vestibular safety.
+4.  **Observability:** Instrument Real User Monitoring (RUM) to correlate entrance animation timing with "Begin Journey" conversion rates.
