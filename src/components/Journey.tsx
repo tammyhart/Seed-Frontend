@@ -27,7 +27,12 @@ const Experience = () => {
 
         <Stage>
           {JOURNEY_DATA.map((scene, index) => (
-            <Scene key={scene.id} globalProgress={progress} index={index}>
+            <Scene
+              key={scene.id}
+              globalProgress={progress}
+              index={index}
+              {...scene}
+            >
               <div
                 style={{
                   color: scene.theme === "light" ? "#000" : "#fff",

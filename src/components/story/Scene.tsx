@@ -3,14 +3,15 @@ import { useTransform, type MotionValue, motion } from "motion/react"
 import useJourney from "@/hooks/useJourney"
 
 import * as Styled from "./Styled"
+import type { SceneData } from "@/data/content"
 
-type Scene = {
+type Scene = SceneData & {
   children: React.ReactNode
   globalProgress: MotionValue<number>
   index: number
 }
 
-const Scene = ({ children, globalProgress, index }: Scene) => {
+const Scene = ({ children, globalProgress, index, theme }: Scene) => {
   const { state } = useJourney()
   const { sceneCount } = state
 
@@ -21,10 +22,16 @@ const Scene = ({ children, globalProgress, index }: Scene) => {
   })
 
   // Temporary styling for verification
-  const backgroundColor = index % 2 === 0 ? "#1a1a1a" : "#2a2a2a"
+  const backgrounds = {
+    light: "var(--color-journey-light)",
+    dark: "var(--color-primary-seed-green)",
+  }
 
   return (
-    <motion.div className={Styled.scene} style={{ x, backgroundColor }}>
+    <motion.div
+      className={Styled.scene}
+      style={{ x, backgroundColor: backgrounds[theme] }}
+    >
       <h1>Scene {index}</h1>
       {children}
     </motion.div>

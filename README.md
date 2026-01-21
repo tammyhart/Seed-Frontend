@@ -20,3 +20,19 @@ I performed a comprehensive upgrade of `package.json` dependencies to their late
 ### 3. CSS
 
 I chose a robust CSS-in-JS architecture (Linaria) to demonstrate scalable styling. This incurred an upfront configuration cost that ate into the implementation time, but it results in a more performant runtime (zero-runtime CSS) for the end user.
+
+## ⏱️ Scoping & Estimation
+
+To execute the full prompt with production-grade fidelity (including complex timeline interactions and proper accessibility), I estimate the total effort at **~18 engineering hours**.
+
+Given the 3-hour constraint, I focused on the highest-risk technical challenges: the core physics engine and a high-fidelity execution of Scene 1. This factors in heavy assist from an agentic AI coding assistant.
+
+| Feature Area                  | Time Estimate | Justification                                                                                                                            |
+| :---------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Architecture & Config**  | **0.5 Hour**  | Setup, Linting, Fonts, and Linaria (Zero-runtime CSS) configuration.                                                                     |
+| **2. Physics Engine**         | **0.5 Hours** | Building a robust `useVirtualScroll` hook that handles touch, wheel, and keyboard events without scroll-jacking or jank.                 |
+| **3. The "Train" Timeline**   | **3 Hours**   | Developing the complex state machine for the interactive timeline, including precise pixel-mapping, progress tracking, and hover states. |
+| **4. Scene 1 (Intro)**        | **1.5 Hours** | High-fidelity layout and entrance choreography. Tuning stagger delays and easing curves to match the brand feel.                         |
+| **5. Scenes 2 & 3**           | **1.5 Hours** | Adapting the layout engine for inverted split-screens and video integration.                                                             |
+| **6. Accessibility & Polish** | **2 Hours**   | Semantic HTML, ARIA labels, and focus states for keyboard navigation.                                                                    |
+| **TOTAL**                     | **~9 Hours**  | **~1.25 Days of Work**                                                                                                                   |

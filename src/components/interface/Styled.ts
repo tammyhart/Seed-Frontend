@@ -94,25 +94,26 @@ export const Data = styled.ul`
 `
 
 export const Timeline = styled.div`
-  position: fixed;
-  bottom: 80px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  inset: auto var(--gap-80) var(--gap-40);
   z-index: 10;
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--gap-24);
+  height: 2px;
 
-  &::before,
-  &::after {
-    content: "";
-    width: 1px;
-    height: 10px;
-    background: #fff;
-    margin-top: -4px;
-  }
+  background: var(--scrim-glass-dark-35);
+
+  align-items: center;
+`
+
+export const TimelinePoint = styled.button`
+  position: relative;
+  z-index: 10;
+
+  background: var(--color-journey-light);
+  color: var(--actions-primary);
+  font-size: var(--typography-size-350);
+  font-weight: var(--typography-weight-500);
 `
 
 export const Footer = styled.footer`
@@ -120,6 +121,8 @@ export const Footer = styled.footer`
   align-items: center;
   justify-content: space-between;
   padding: var(--gap-24) var(--gap-16);
+
+  background: var(--color-primary-white);
 `
 
 export const Pills = styled.div`

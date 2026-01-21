@@ -47,6 +47,10 @@
   font-display: swap;
 }
 
+:root {
+  --color-journey-light: #efefea;
+}
+
 *,
 *::before,
 *::after {
