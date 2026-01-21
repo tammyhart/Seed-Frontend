@@ -59,7 +59,7 @@ export const Name = styled.span`
   align-items: center;
   gap: var(--gap-4);
 
-  color: var(--extended-palette-indigo-blue);
+  color: var(--highlight-color);
 `
 
 export const Data = styled.ul`

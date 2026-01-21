@@ -50,6 +50,7 @@
 :root {
   --color-journey-light: #efefea;
   --timeline-color: var(--color-journey-light);
+  --highlight-color: var(--extended-palette-indigo-blue);
 }
 
 *,
@@ -76,6 +77,7 @@ body.theme-dark {
   --text-primary: var(--color-primary-snow-white);
   --actions-primary: var(--color-primary-snow-white);
   --timeline-color: var(--color-primary-seed-green);
+  --highlight-color: var(--extended-palette-siskin-green);
 }
 
 a,
