@@ -7,7 +7,7 @@ type Stage = {
   children: React.ReactNode
 }
 
-const Stage = ({ children }: Stage): React.ReactElement => {
+const Stage = ({ children }: Stage) => {
   const { dispatch, progress } = useJourney()
 
   useVirtualScroll({ dispatch, progress })

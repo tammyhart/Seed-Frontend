@@ -10,11 +10,7 @@ type Scene = {
   index: number
 }
 
-const Scene = ({
-  children,
-  globalProgress,
-  index,
-}: Scene): React.ReactElement => {
+const Scene = ({ children, globalProgress, index }: Scene) => {
   const { state } = useJourney()
   const { sceneCount } = state
 

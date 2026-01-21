@@ -1,13 +1,10 @@
+import { css } from "@linaria/core"
 import { styled } from "@linaria/react"
 
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   padding: var(--gap-8);
-  padding-left: var(--gap-16);
-
-  border-top-left-radius: var(--radius-large);
-  border-top-right-radius: var(--radius-large);
 `
 
 export const Nav = styled.nav`
@@ -16,40 +13,84 @@ export const Nav = styled.nav`
 `
 
 export const Logo = styled.a`
+  padding-left: var(--gap-32);
+  padding-right: var(--gap-16);
+
   font-size: 20px;
-  color: inherit;
-  text-decoration: none;
+  color: var(--actions-primary);
 `
 
 export const NavLink = styled.a`
-  padding: var(--gap-8) var(--gap-24);
+  padding-inline: var(--gap-24);
 
-  text-decoration: none;
-  color: inherit;
-  font-size: var(--gap-16);
-  font-weight: 350;
-  letter-spacing: -0.25%;
-  line-height: 140%;
-`
-
-export const Footer = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  padding: var(--gap-24);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: var(--actions-primary);
+  font-size: var(--typography-size-400);
+  font-weight: var(--typography-weight-300);
+  letter-spacing: -0.0025em;
+  line-height: var(--typography-size-1200);
 `
 
 export const Welcome = styled.div`
-  position: absolute;
-  top: var(--gap-24);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-inline: var(--gap-48);
+`
 
-  color: #fff;
-  font-size: 24px;
+export const welcomeText = css`
+  font-size: var(--typography-size-600);
+  font-weight: var(--typography-weight-300);
+  line-height: 1.2;
+  letter-spacing: -0.0015em;
+`
+
+export const Asterisk = styled.span`
+  display: inline-block;
+  transform: translateY(-0.75rem);
+  width: 0.375rem;
+  height: 0.375rem;
+
+  border-radius: 50%;
+  background: var(--actions-primary);
+`
+
+export const Name = styled.span`
+  display: flex;
+  align-items: center;
+  gap: var(--gap-4);
+
+  color: var(--extended-palette-indigo-blue);
+`
+
+export const Data = styled.ul`
+  display: flex;
+  gap: var(--gap-32);
+
+  li {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    gap: var(--gap-4);
+
+    .number {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-4);
+
+      svg {
+        flex-shrink: 0;
+        width: 1.25rem;
+        height: 1.25rem;
+        padding-top: 0.625rem;
+      }
+    }
+
+    .label {
+      font-size: 0.625rem;
+      font-weight: var(--typography-weight-300);
+      line-height: 1.4;
+    }
+  }
 `
 
 export const Timeline = styled.div`
@@ -72,4 +113,25 @@ export const Timeline = styled.div`
     background: #fff;
     margin-top: -4px;
   }
+`
+
+export const Footer = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--gap-24) var(--gap-16);
+`
+
+export const Pills = styled.div`
+  display: flex;
+  gap: var(--gap-8);
+`
+
+export const Pill = styled.p`
+  border-radius: var(--radius-medium);
+  border: 0.0625rem solid currentColor;
+  font-size: var(--typography-size-300);
+  padding-inline: var(--gap-8);
+  font-weight: var(--typography-weight-500);
+  line-height: 1.25;
 `

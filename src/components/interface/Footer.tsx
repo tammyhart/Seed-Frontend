@@ -1,17 +1,38 @@
+import Image from "next/image"
+
+import audio from "@/assets/audio.svg"
+import bottomNav from "@/assets/bottom-nav.png"
+
 import * as Styled from "./Styled"
 
-const Footer = (): React.ReactElement => {
+const content = {
+  day: 60,
+  products: ["DS-01®"],
+}
+
+const Footer = () => {
   return (
     <Styled.Footer>
-      <span>© 2024 SEED HEALTH</span>
-      <div style={{ display: "flex", gap: "20px" }}>
-        <a href="#" style={{ color: "inherit", textDecoration: "none" }}>
-          INSTAGRAM
-        </a>
-        <a href="#" style={{ color: "inherit", textDecoration: "none" }}>
-          TWITTER
-        </a>
-      </div>
+      <Styled.Pills>
+        <Styled.Pill>Day {content.day}</Styled.Pill>
+        {content.products.map(product => (
+          <Styled.Pill key={product}>{product}</Styled.Pill>
+        ))}
+      </Styled.Pills>
+
+      <Image
+        alt="Seed Health Navigation"
+        height={48}
+        src={bottomNav}
+        width={458}
+      />
+
+      <Image
+        alt="Audio Player Interface (Visual Demo)"
+        height={28}
+        src={audio}
+        width={198}
+      />
     </Styled.Footer>
   )
 }

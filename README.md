@@ -16,3 +16,7 @@ I performed a comprehensive upgrade of `package.json` dependencies to their late
 
 - **Vulnerability Mitigation:** This upgrade addresses recent security advisories associated with older Next.js versions (specifically regarding **Cache Poisoning** and **SSR Denial-of-Service** vectors).
 - **Strictness:** Ensures full compatibility with the latest TypeScript strict mode and React ecosystem standards.
+
+### 3. CSS
+
+I chose a robust CSS-in-JS architecture (Linaria) to demonstrate scalable styling. This incurred an upfront configuration cost that ate into the implementation time, but it results in a more performant runtime (zero-runtime CSS) for the end user.

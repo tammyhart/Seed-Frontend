@@ -17,10 +17,12 @@ const Experience = () => {
 
   return (
     <Styled.Main>
-      <Header />
-
       <Styled.Viewport>
-        <Welcome />
+        <Styled.Primary>
+          <Header />
+          <Welcome />
+        </Styled.Primary>
+
         <Timeline />
 
         <Stage>

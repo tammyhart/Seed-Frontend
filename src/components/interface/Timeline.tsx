@@ -1,6 +1,6 @@
 import * as Styled from "./Styled"
 
-const Timeline = (): React.ReactElement => {
+const Timeline = () => {
   return <Styled.Timeline />
 }
 

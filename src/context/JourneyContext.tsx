@@ -18,10 +18,7 @@ type JourneyProvider = {
   sceneCount: number
 }
 
-const JourneyProvider = ({
-  children,
-  sceneCount,
-}: JourneyProvider): React.ReactElement => {
+const JourneyProvider = ({ children, sceneCount }: JourneyProvider) => {
   const [state, dispatch] = useReducer(journeyReducer, {
     ...initialJourneyState,
     sceneCount,
