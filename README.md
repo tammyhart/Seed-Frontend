@@ -21,11 +21,33 @@ I performed a comprehensive upgrade of `package.json` dependencies to their late
 
 I chose a robust CSS-in-JS architecture (Linaria) to demonstrate scalable styling. This incurred an upfront configuration cost that ate into the implementation time, but it results in a more performant runtime (zero-runtime CSS) for the end user.
 
+## 🧠 Dynamic Content Logic
+
+While the prompt provided static text for the final state ("...taking shape"), I implemented a dynamic content engine to handle the entire user lifecycle.
+
+Instead of hardcoding the strings, the interface calculates the user's specific position in the journey relative to their start date. This allows the application to serve personalized messaging for Day 1, Week 1, and Month 3 without needing new designs.
+
+```typescript
+const getStatusString = (): string => {
+  const now = new Date()
+  const diffTime = Math.abs(now.getTime() - START_DATE.getTime())
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+  // Expanded the design system to cover early lifecycle states
+  if (diffDays <= 1) return "And your path begins Now"
+  if (diffDays <= 7) return "And you are settling In"
+  if (diffDays <= 30) return "And new habits are Forming"
+  if (diffDays < 90) return "And consistency is the Key"
+
+  return "And results are taking Shape"
+}
+```
+
 ## ⏱️ Scoping & Estimation
 
 To execute the full prompt with production-grade fidelity (including complex timeline interactions and proper accessibility), I estimate the total effort at **~18 engineering hours**.
 
-Given the 3-hour constraint, I focused on the highest-risk technical challenges: the core physics engine and a high-fidelity execution of Scene 1. This factors in heavy assist from an agentic AI coding assistant.
+Given the 3-hour constraint, I focused on the highest-risk technical challenges: the core physics engine, interface layout, and a high-fidelity execution of Scene 1. This factors in heavy assist from an agentic AI coding assistant.
 
 | Feature Area                  | Time Estimate | Justification                                                                                                                            |
 | :---------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------- |
