@@ -1,9 +1,9 @@
 import { useTransform, type MotionValue, motion } from "motion/react"
 
+import type { SceneData } from "@/components/content"
 import useJourney from "@/hooks/useJourney"
 
 import * as Styled from "./Styled"
-import type { SceneData } from "@/data/content"
 
 type Scene = SceneData & {
   children: React.ReactNode
@@ -32,7 +32,6 @@ const Scene = ({ children, globalProgress, index, theme }: Scene) => {
       className={Styled.scene}
       style={{ x, backgroundColor: backgrounds[theme] }}
     >
-      <h1>Scene {index}</h1>
       {children}
     </motion.div>
   )

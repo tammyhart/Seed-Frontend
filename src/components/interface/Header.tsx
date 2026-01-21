@@ -1,4 +1,4 @@
-import { HEADER_LINKS } from "@/data/content"
+import { HEADER_LINKS } from "@/components/content"
 
 import * as Styled from "./Styled"
 

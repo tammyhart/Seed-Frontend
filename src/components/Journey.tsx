@@ -8,8 +8,7 @@ import Welcome from "@/components/interface/Welcome"
 import Stage from "@/components/story/Stage"
 import Scene from "@/components/story/Scene"
 
-import JOURNEY_DATA from "@/data/content"
-
+import JOURNEY_DATA from "./content"
 import * as Styled from "./Styled"
 
 const Experience = () => {
@@ -33,15 +32,7 @@ const Experience = () => {
               index={index}
               {...scene}
             >
-              <div
-                style={{
-                  color: scene.theme === "light" ? "#000" : "#fff",
-                  textAlign: "center",
-                }}
-              >
-                <h2>{scene.title}</h2>
-                <p>Theme: {scene.theme}</p>
-              </div>
+              <scene.Component />
             </Scene>
           ))}
         </Stage>

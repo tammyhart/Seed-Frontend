@@ -1,7 +1,7 @@
 import { animate } from "motion/react"
 
+import { JOURNEY_DATA } from "@/components/content"
 import useJourney from "@/hooks/useJourney"
-import { JOURNEY_DATA } from "@/data/content"
 import * as Styled from "./Styled"
 
 const Timeline = () => {
